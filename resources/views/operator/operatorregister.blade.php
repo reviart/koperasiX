@@ -83,11 +83,9 @@
                                 <button type="submit" onclick="return confirm('Apakah data sudah terisi benar?')" class="btn btn-primary">
                                     Register
                                 </button>
-                                {{--
                                 @if(Auth::guard('admin')->user()->id)
-                                  <button onclick="self.close()" class="btn btn-warning">Cancel</button>
+                                  <button onclick="self.close()" class="btn btn-warning">Back / Cancel</button>
                                 @endif
-                                --}}
                             </div>
                         </div>
                     </form>

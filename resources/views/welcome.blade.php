@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="{{ asset('img/medicine.png') }}"/>
-        <title>Koperasi</title>
+        <link rel="shortcut icon" type="image/png" href="http://pluspng.com/img-png/favicon-png--192.png"/>
+        <title>Koperca</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -66,20 +66,22 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('operator.dashboard') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login operator</a>
-                        <a href="{{ route('admin.login') }}">Login admin</a>
-                    @endauth
-                </div>
+          <div class="top-right links">
+            @if ((empty(Auth::user()->id))&&(empty(Auth::guard('admin')->user()->id)))
+              <a href="{{ route('login') }}">Login operator</a>
+              <a href="{{ route('admin.login') }}">Login admin</a>
+            @elseif (empty(Auth::user()->id))
+              <a href="{{ route('login') }}">Login operator</a>
+              <a href="{{ route('admin.dashboard') }}">Home(admin)</a>
+            @else
+              <a href="{{ route('operator.dashboard') }}">Home(operator)</a>
+              <a href="{{ route('admin.login') }}">Login admin</a>
             @endif
+          </div>
 
             <div class="content">
                 <div class="title m-b-md">
-                    KOPERASI
+                    Data Kontrak Indonesia Power - KOPERCA
                 </div>
                 {{--
                 <div class="links">

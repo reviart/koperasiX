@@ -15,13 +15,11 @@ class CreatePenerimaansTable extends Migration
     {
         Schema::create('penerimaans', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('total_nilai');
-            $table->string('tipe'); //pilihan rutin/non
-            $table->string('status'); //pilihan lunas/belum
+            $table->double('nilai');
             $table->unsignedInteger('admin_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('kontrak_id');
-            $table->timestamps();
+            $table->timestamps();//tampilkan
 
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->foreign('user_id')->references('id')->on('users');

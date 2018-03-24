@@ -15,7 +15,7 @@ class Penerimaan extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'total_nilai', 'tipe', 'status', 'admin_id', 'user_id', 'kontrak_id'
+        'nilai', 'admin_id', 'user_id', 'kontrak_id'
     ];
 
     public function admin(){
@@ -26,8 +26,5 @@ class Penerimaan extends Authenticatable
     }
     public function kontrak(){
       return $this->belongsTo('App\Kontrak');
-    }
-    public function penerimaandetail(){
-      return $this->hasMany('App\PenerimaanDetail');
     }
 }

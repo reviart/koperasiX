@@ -52,13 +52,15 @@ class KontrakController extends Controller
       $object->nilai_kerja = $request->get('nilai_kerja');
       $object->tipe = $request->get('tipe');
       $object->tahap_bayar = $request->get('tahap_bayar');
+      $object->status = "Belum";
       $object->tgl_kontrak = $request->get('tgl_kontrak');
       $object->tgl_mulai = $request->get('tgl_mulai');
       $object->tgl_selesai = $request->get('tgl_selesai');
       $object->user_id = $request->get('user_id');
       $object->admin_id = $request->get('admin_id');
       $object->save();
-      return redirect()->route('kontrak.index')->with('success', '1 record created!');
+      //return redirect()->route('kontrak.index')->with('success', '1 record created!');
+      return $object;
     }
 
     public function show($id)

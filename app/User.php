@@ -36,13 +36,7 @@ class User extends Authenticatable
     public function biaya(){
       return $this->hasMany('App\Biaya');
     }
-    public function biayadetail(){
-      return $this->hasMany('App\BiayaDetail');
-    }
     public function penerimaan(){
       return $this->hasMany('App\Penerimaan');
-    }
-    public function penerimaandetail(){
-      return $this->hasMany('App\PenerimaanDetail');
     }
 }

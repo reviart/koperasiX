@@ -15,7 +15,7 @@ class Biaya extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'biaya_total', 'tipe', 'admin_id', 'user_id', 'kontrak_id'
+        'biaya', 'admin_id', 'user_id', 'kontrak_id'
     ];
 
     public function admin(){
@@ -26,8 +26,5 @@ class Biaya extends Authenticatable
     }
     public function kontrak(){
       return $this->belongsTo('App\Kontrak');
-    }
-    public function biayadetail(){
-      return $this->hasMany('App\BiayaDetail');
     }
 }

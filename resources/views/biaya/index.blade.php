@@ -30,8 +30,8 @@
           <tr class="success">
             <th>No</th>
             <th>Nomor kontrak</th>
-            <th>Nama pekerjaan</th>
-            <th>Nama pelaksana</th>
+            <th>Total biaya</th>
+            <th>Tipe</th>
             <th>Tanggal input</th>
             <th colspan="3">Aksi</th>
           </tr>

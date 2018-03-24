@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Koperasi</title>
+    <link rel="shortcut icon" type="image/png" href="http://pluspng.com/img-png/favicon-png--192.png"/>
+    <title>Koperca</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -24,24 +24,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Koperasi</a>
+          <a class="navbar-brand" href="{{url('/')}}">Koperca</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <?php
-            $l = "logout";
-            if ((empty(Auth::user()->id))&&(empty(Auth::guard('admin')->user()->id))) {
-              $name = "";
-            }
-            elseif (empty(Auth::user()->id)) {
-              $name = Auth::guard('admin')->user()->name;
-              $l = "admin.logout";
-            }
-            else {
-              $name = Auth::user()->name;
-              $l = "logout";
-            }
-            ?>
+            @if ((empty(Auth::user()->name))&&(empty(Auth::guard('admin')->user()->name)))
+              @php
+                $name = "";
+                $l = "logout";
+              @endphp
+            @elseif (empty(Auth::user()->name))
+              @php
+                $name = Auth::guard('admin')->user()->name;
+                $l = "admin.logout";
+              @endphp
+            @else
+              @php
+                $name = Auth::user()->name;
+                $l = "logout";
+              @endphp
+            @endif
+
             <li><a href="#">{{$name}}</a></li>
             <li>
               <a href="{{route($l)}}"
@@ -62,15 +65,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="">Profile</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="{{route('kontrak.index')}}">Kontrak</a></li>
-            <li><a href="">Biaya</a></li>
-            <li><a href="">Biaya detail</a></li>
-            <li><a href="">Penerimaan</a></li>
-            <li><a href="">Penerimaan detail</a></li>
+            <li><a href="{{route('biaya.index')}}">Biaya</a></li>
+            <li><a href="{{route('penerimaan.index')}}">Penerimaan</a></li>
           </ul>
         </div>
         {{--end here--}}

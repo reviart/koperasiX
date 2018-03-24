@@ -15,12 +15,11 @@ class CreateBiayasTable extends Migration
     {
         Schema::create('biayas', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('biaya_total');
-            $table->string('tipe'); //pilihan rutin/non
+            $table->double('biaya');
             $table->unsignedInteger('admin_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('kontrak_id');
-            $table->timestamps();
+            $table->timestamps();//tampilkan
 
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->foreign('user_id')->references('id')->on('users');

@@ -21,6 +21,7 @@ class CreateKontraksTable extends Migration
           $table->double('nilai_kerja');
           $table->string('tipe'); //pilihan rutin/non
           $table->integer('tahap_bayar');
+          $table->string('status')->nullable(); //pilihan lunas/belum
           $table->date('tgl_kontrak');
           $table->date('tgl_mulai');
           $table->date('tgl_selesai');
