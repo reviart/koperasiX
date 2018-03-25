@@ -43,7 +43,7 @@ Route::prefix('biaya')->group(function () {
   Route::get('/', 'BiayaController@index')->name('biaya.index');
   Route::get('detail/{id}', 'BiayaController@detail')->name('biaya.detail');
   //----------------------------------
-  Route::get('/', 'BiayaController@index')->name('biaya.index');
+  Route::get('create/{id}', 'BiayaController@create')->name('biaya.create');
   Route::get('store', 'BiayaController@create')->name('biaya.store');
   Route::post('store', 'BiayaController@store')->name('biaya.store.submit');
   Route::get('edit/{id}', 'BiayaController@show')->name('biaya.edit');

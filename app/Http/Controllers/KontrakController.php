@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Admin;
 use App\User;
 use App\Kontrak;
@@ -10,16 +11,6 @@ use Auth;
 
 class KontrakController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    /*public function __construct()
-    {
-        //$this->middleware('auth:admin');
-        $this->middleware('auth');
-    }*/
 
     /**
      * Show the application dashboard.
@@ -51,16 +42,21 @@ class KontrakController extends Controller
       $object->nama_pelaksana = $request->get('nama_pelaksana');
       $object->nilai_kerja = $request->get('nilai_kerja');
       $object->tipe = $request->get('tipe');
-      $object->tahap_bayar = $request->get('tahap_bayar');
-      $object->status = "Belum";
+      $tb =  $request->get('tahap_bayar');
+      $object->tahap_bayar = $tb;
+      if ($tb > 1) {
+        $status = "Belum lunas";
+      }else {
+        $status = "Lunas";
+      }
+      $object->status = $status;
       $object->tgl_kontrak = $request->get('tgl_kontrak');
       $object->tgl_mulai = $request->get('tgl_mulai');
       $object->tgl_selesai = $request->get('tgl_selesai');
       $object->user_id = $request->get('user_id');
       $object->admin_id = $request->get('admin_id');
       $object->save();
-      //return redirect()->route('kontrak.index')->with('success', '1 record created!');
-      return $object;
+      return redirect()->route('kontrak.index')->with('success', '1 record created!');
     }
 
     public function show($id)
@@ -78,6 +74,7 @@ class KontrakController extends Controller
         'nama_pelaksana' => $request->get('nama_pelaksana'),
         'nilai_kerja' => $request->get('nilai_kerja'),
         'tipe' => $request->get('tipe'),
+        'status' => $request->get('status'),
         'tahap_bayar' => $request->get('tahap_bayar'),
         'tgl_kontrak' => $request->get('tgl_kontrak'),
         'tgl_mulai' => $request->get('tgl_mulai'),

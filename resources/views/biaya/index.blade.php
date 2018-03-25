@@ -7,7 +7,7 @@
   @extends('layouts.auth')
   @section('content')
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header">Kontrak</h2>
+    <h2 class="sub-header">Biaya</h2>
     @if (session('success'))
         <div class="alert alert-success">
           <center>
@@ -23,7 +23,6 @@
     @else
     @endif
 
-    <a href="{{ route('kontrak.create') }}" class="btn btn-primary">Tambah kontrak</a>
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <thead>
@@ -33,7 +32,7 @@
             <th>Total biaya</th>
             <th>Tipe</th>
             <th>Tanggal input</th>
-            <th colspan="3">Aksi</th>
+            <th colspan="2">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -50,18 +49,11 @@
           <tr class="{{$tr}}">
             <td>{{$no += 1}}</td>
             <td>{{$data->nomor_kontrak}}</td>
-            <td>{{$data->nama_pekerjaan}}</td>
-            <td>{{$data->nama_pelaksana}}</td>
+            <td>Rp {{$data->nilai_kerja}},-</td>
+            <td>{{$data->tipe}}</td>
             <td>{{$data->created_at}}</td>
-            <td width="5%"><a href="{{ route('kontrak.detail', [$data->id]) }}" class="btn btn-primary">Detail</a></td>
-            <td width="5%"><a href="{{ route('kontrak.edit', [$data->id]) }}" class="btn btn-warning">Edit</a></td>
-            <td width="5%">
-              <form class="" action="{{ route('kontrak.destroy', [$data->id]) }}" method="post">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" name="button" onclick="return confirm('Apakah yakin menghapus kontrak {{$data->nomor_kontrak}} ?')" class="btn btn-danger">Delete</button>
-              </form>
-            </td>
+            <td width="5%"><a href="{{ route('biaya.detail', [$data->id]) }}" class="btn btn-primary">Detail</a></td>
+            <td width="5%"><a href="{{ route('biaya.create', [$data->id]) }}" class="btn btn-success">Tambah tahap</a></td>
           </tr>
           @endforeach
         </tbody>

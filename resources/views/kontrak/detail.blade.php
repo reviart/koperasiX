@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th>Nilai kerja</th>
-          <td>Rp {{$data->nilai_kerja}}</td>
+          <td>Rp {{$data->nilai_kerja}},-</td>
         </tr>
         <tr>
           <th>Tipe</th>
@@ -38,6 +38,10 @@
         <tr>
           <th>Tahap bayar</th>
           <td>{{$data->tahap_bayar}}</td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td>{{$data->status}}</td>
         </tr>
         <tr>
           <th>Tanggal kontrak</th>
@@ -63,7 +67,7 @@
         ?>
         <tr>
           <th>Terakhir dibuat/ubah</th>
-          <td>Pegawai(<b>{{$user_name}}</b>) | Admin(<b>{{$admin_name}}</b>)</td>
+          <td>Operator(<b>{{$user_name}}</b>) | Admin(<b>{{$admin_name}}</b>)</td>
         </tr>
         <tr>
           <th>Tanggal dibuat</th>

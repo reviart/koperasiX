@@ -94,6 +94,16 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                            <label for="status" class="col-md-3 control-label">Status</label>
+                            <div class="col-md-4">
+                              <select class="form-control" id="sel1" name="status" required>
+                                <option value="{{$datas[0]->status}}">{{$datas[0]->status}}</option>
+                                <option value="lunas">Lunas</option>
+                                <option value="Belum lunas">Belum Lunas</option>
+                              </select>
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('tgl_kontrak') ? ' has-error' : '' }}">
                             <label for="tgl_kontrak" class="col-md-3 control-label">Tanggal kontrak</label>
                             <div class="col-md-4">

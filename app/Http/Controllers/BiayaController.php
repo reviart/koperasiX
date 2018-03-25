@@ -3,93 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Biaya;
 use App\Admin;
 use App\User;
 use App\Kontrak;
 use Auth;
 
-class KontrakController extends Controller
+class BiayaController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    /*public function __construct()
-    {
-        //$this->middleware('auth:admin');
-        $this->middleware('auth');
-    }*/
+  public function index()
+  {
+    $datas = Kontrak::with('admin', 'user')->orderBy('nomor_kontrak')->get();
+    return view('biaya.index', compact('datas'));
+  }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      $datas = Kontrak::with('admin', 'user')->orderBy('nomor_kontrak')->get();
-      return view('kontrak.index', compact('datas'));
-    }
+  public function create($id)
+  {
+    $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
+    return view('biaya.create', compact('datas'));
+  }
 
-    public function create()
-    {
-      return view('kontrak.create');
-    }
+  public function detail($id)
+  {
+    $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
+    $biayas = Biaya::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
+    return view('biaya.detail', compact('datas', 'biayas'));
+  }
 
-    public function detail($id)
-    {
-      $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
-      return view('kontrak.detail', compact('datas'));
-    }
+  public function store(Request $request)
+  {
+    $object = new Biaya;
+    $object->biaya = $request->get('biaya');
+    $object->admin_id = $request->get('admin_id');
+    $object->user_id = $request->get('user_id');
+    $object->kontrak_id = $request->get('kontrak_id');
+    $object->save();
 
-    public function store(Request $request)
-    {
-      $object = new Kontrak;
-      $object->nomor_kontrak = $request->get('nomor_kontrak');
-      $object->nama_pekerjaan = $request->get('nama_pekerjaan');
-      $object->nama_pelaksana = $request->get('nama_pelaksana');
-      $object->nilai_kerja = $request->get('nilai_kerja');
-      $object->tipe = $request->get('tipe');
-      $object->tahap_bayar = $request->get('tahap_bayar');
-      $object->tgl_kontrak = $request->get('tgl_kontrak');
-      $object->tgl_mulai = $request->get('tgl_mulai');
-      $object->tgl_selesai = $request->get('tgl_selesai');
-      $object->user_id = $request->get('user_id');
-      $object->admin_id = $request->get('admin_id');
-      $object->save();
-      return redirect()->route('kontrak.index')->with('success', '1 record created!');
-    }
+    return redirect()->route('biaya.index')->with('success', '1 record created!');
+  }
 
-    public function show($id)
-    {
-      $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
-      return view('kontrak.edit', compact('datas'));
-    }
+  public function show($id)
+  {
+    $datas = Biaya::with('admin', 'user', 'kontrak')->where('id', $id)->get();
+    return view('biaya.edit', compact('datas'));
+  }
 
-    public function update(Request $request, $id)
-    {
-      $datas = Kontrak::find($id);
-      $datas->update([
-        'nomor_kontrak' => $request->get('nomor_kontrak'),
-        'nama_pekerjaan' => $request->get('nama_pekerjaan'),
-        'nama_pelaksana' => $request->get('nama_pelaksana'),
-        'nilai_kerja' => $request->get('nilai_kerja'),
-        'tipe' => $request->get('tipe'),
-        'tahap_bayar' => $request->get('tahap_bayar'),
-        'tgl_kontrak' => $request->get('tgl_kontrak'),
-        'tgl_mulai' => $request->get('tgl_mulai'),
-        'tgl_selesai' => $request->get('tgl_selesai'),
-        'admin_id' => $request->get('admin_id'),
-        'user_id' => $request->get('user_id')
-      ]);
-      return redirect()->route('kontrak.index')->with('success', '1 record updated!');
-    }
+  public function update(Request $request, $id)
+  {
+    $datas = Biaya::find($id);
+    $datas->update([
+      'biaya' => $request->get('biaya'),
+      'admin_id' => $request->get('admin_id'),
+      'user_id' => $request->get('user_id'),
+      'kontrak_id' => $request->get('kontrak_id')
+    ]);
 
-    public function destroy($id)
-    {
-      $datas = Kontrak::findOrFail($id);
-      $datas->delete();
-      return redirect()->back()->with('warning', '1 record deleted!');
-    }
+    return redirect()->route('biaya.index')->with('success', '1 record updated!');
+  }
+
+  public function destroy($id)
+  {
+    $datas = Biaya::findOrFail($id);
+    $datas->delete();
+    return redirect()->back()->with('warning', '1 record deleted!');
+  }
+
 }
