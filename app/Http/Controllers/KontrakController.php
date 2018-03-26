@@ -8,6 +8,7 @@ use App\Admin;
 use App\User;
 use App\Kontrak;
 use Auth;
+use PDF;
 
 class KontrakController extends Controller
 {
@@ -32,6 +33,13 @@ class KontrakController extends Controller
     {
       $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
       return view('kontrak.detail', compact('datas'));
+    }
+
+    public function print()
+    {
+      $datas = Kontrak::with('admin', 'user')->get();
+      $pdf = PDF::loadView('kontrak.print', compact('datas'));
+      return $pdf->download('invoice.pdf');
     }
 
     public function store(Request $request)

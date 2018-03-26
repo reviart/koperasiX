@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 Route::get('/operator/home', 'HomeController@index')->name('operator.dashboard');
+Route::get('/test', 'PdfController@index')->name('pdf');
 
 Route::prefix('admin')->group(function () {
   Route::get('home', 'Admin\AdminController@index')->name('admin.dashboard');
@@ -32,6 +34,7 @@ Route::prefix('kontrak')->group(function () {
   Route::get('/', 'KontrakController@index')->name('kontrak.index');
   Route::get('create', 'KontrakController@create')->name('kontrak.create');
   Route::get('detail/{id}', 'KontrakController@detail')->name('kontrak.detail');
+  Route::get('print', 'KontrakController@print')->name('kontrak.print');
   Route::get('store', 'KontrakController@create')->name('kontrak.store');
   Route::post('store', 'KontrakController@store')->name('kontrak.store.submit');
   Route::get('edit/{id}', 'KontrakController@show')->name('kontrak.edit');
@@ -42,6 +45,7 @@ Route::prefix('kontrak')->group(function () {
 Route::prefix('biaya')->group(function () {
   Route::get('/', 'BiayaController@index')->name('biaya.index');
   Route::get('detail/{id}', 'BiayaController@detail')->name('biaya.detail');
+  Route::get('print/{id}', 'BiayaController@print')->name('biaya.print');
   //----------------------------------
   Route::get('create/{id}', 'BiayaController@create')->name('biaya.create');
   Route::get('store', 'BiayaController@create')->name('biaya.store');
@@ -54,6 +58,7 @@ Route::prefix('biaya')->group(function () {
 Route::prefix('penerimaan')->group(function () {
   Route::get('/', 'PenerimaanController@index')->name('penerimaan.index');
   Route::get('detail/{id}', 'PenerimaanController@detail')->name('penerimaan.detail');
+  Route::get('print/{id}', 'PenerimaanController@print')->name('penerimaan.print');
   //----------------------------------
   Route::get('create/{id}', 'PenerimaanController@create')->name('penerimaan.create');
   Route::get('store', 'PenerimaanController@create')->name('penerimaan.store');

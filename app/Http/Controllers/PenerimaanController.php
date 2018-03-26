@@ -8,6 +8,8 @@ use App\Admin;
 use App\User;
 use App\Kontrak;
 use Auth;
+use PDF;
+use Carbon\Carbon;
 
 class PenerimaanController extends Controller
 {
@@ -28,6 +30,16 @@ class PenerimaanController extends Controller
     $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
     $penerimaans = Penerimaan::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
     return view('penerimaan.detail', compact('datas', 'penerimaans'));
+  }
+
+  public function print($id)
+  {
+    $mytime = Carbon::now();
+    $waktu = $mytime->toDateTimeString();
+    $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
+    $penerimaans = Penerimaan::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
+    $pdf = PDF::loadView('penerimaan.print', compact('datas', 'penerimaans', 'waktu'));
+    return $pdf->download('invoice.pdf');
   }
 
   public function store(Request $request)

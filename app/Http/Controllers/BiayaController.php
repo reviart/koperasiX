@@ -8,6 +8,8 @@ use App\Admin;
 use App\User;
 use App\Kontrak;
 use Auth;
+use PDF;
+use Carbon\Carbon;
 
 class BiayaController extends Controller
 {
@@ -28,6 +30,16 @@ class BiayaController extends Controller
     $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
     $biayas = Biaya::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
     return view('biaya.detail', compact('datas', 'biayas'));
+  }
+
+  public function print($id)
+  {
+    $mytime = Carbon::now();
+    $waktu = $mytime->toDateTimeString();
+    $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
+    $biayas = Biaya::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
+    $pdf = PDF::loadView('biaya.print', compact('datas', 'biayas', 'waktu'));
+    return $pdf->download('invoice.pdf');
   }
 
   public function store(Request $request)

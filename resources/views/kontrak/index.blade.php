@@ -24,6 +24,7 @@
     @endif
 
     <a href="{{ route('kontrak.create') }}" class="btn btn-primary">Tambah kontrak</a>
+    <a href="{{ route('kontrak.print') }}" class="btn btn-primary">Cetak</a>
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <thead>
