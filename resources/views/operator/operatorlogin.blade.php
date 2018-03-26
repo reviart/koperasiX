@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+    <link rel="shortcut icon" type="image/png" href="https://2.bp.blogspot.com/-FnC4sTFh-gs/V6CvE3f4BZI/AAAAAAAAA4c/_75780DI8aU6P-kTP_babPW6EkoATEhmACPcB/s1600/Lambang%2BKoperasi.png"/>
     <title>Koperasi</title>
 
     <!-- Bootstrap core CSS -->

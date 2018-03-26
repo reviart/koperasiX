@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="http://pluspng.com/img-png/favicon-png--192.png"/>
+        <link rel="shortcut icon" type="image/png" href="https://2.bp.blogspot.com/-FnC4sTFh-gs/V6CvE3f4BZI/AAAAAAAAA4c/_75780DI8aU6P-kTP_babPW6EkoATEhmACPcB/s1600/Lambang%2BKoperasi.png"/>
         <title>Koperca</title>
 
         <!-- Fonts -->

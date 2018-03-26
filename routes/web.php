@@ -54,6 +54,13 @@ Route::prefix('biaya')->group(function () {
 Route::prefix('penerimaan')->group(function () {
   Route::get('/', 'PenerimaanController@index')->name('penerimaan.index');
   Route::get('detail/{id}', 'PenerimaanController@detail')->name('penerimaan.detail');
+  //----------------------------------
+  Route::get('create/{id}', 'PenerimaanController@create')->name('penerimaan.create');
+  Route::get('store', 'PenerimaanController@create')->name('penerimaan.store');
+  Route::post('store', 'PenerimaanController@store')->name('penerimaan.store.submit');
+  Route::get('edit/{id}', 'PenerimaanController@show')->name('penerimaan.edit');
+  Route::put('saveEdit/{id}', 'PenerimaanController@update')->name('penerimaan.edit.submit');
+  Route::delete('destroy/{id}', 'PenerimaanController@destroy')->name('penerimaan.destroy');
 });
   /*----------------------------------
   Route::get('password/reset', 'Curtner\CurtnerForgotPasswordController@showLinkRequestForm')->name('curtner.password.request');

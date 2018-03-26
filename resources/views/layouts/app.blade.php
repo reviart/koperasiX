@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/png" href="http://pluspng.com/img-png/favicon-png--192.png"/>
+    <link rel="shortcut icon" type="image/png" href="https://2.bp.blogspot.com/-FnC4sTFh-gs/V6CvE3f4BZI/AAAAAAAAA4c/_75780DI8aU6P-kTP_babPW6EkoATEhmACPcB/s1600/Lambang%2BKoperasi.png"/>
     <title>Koperca</title>
 
     <!-- Styles -->

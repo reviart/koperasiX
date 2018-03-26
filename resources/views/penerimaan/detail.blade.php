@@ -8,8 +8,8 @@
 
   @section('content')
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header">Detail Biaya</h2>
-    <a href="{{ route('biaya.create', [$datas[0]->id]) }}" class="btn btn-primary">Tambah tahap</a>
+    <h2 class="sub-header">Detail penerimaan</h2>
+    <a href="{{ route('penerimaan.create', [$datas[0]->id]) }}" class="btn btn-primary">Tambah penerimaan</a>
     <button type="button" name="button" onclick="history.back()" class="btn btn-danger">Kembali</button>
     <br><br>
       <table class="table table-striped">
@@ -55,7 +55,7 @@
         <thead>
           <tr class="success">
             <th>No</th>
-            <th>Biaya</th>
+            <th>Nilai</th>
             <th>Terakhir dibuat/ubah</th>
             <th>Tanggal dibuat</th>
             <th>Tanggal diubah</th>
@@ -64,7 +64,7 @@
         </thead>
         <tbody>
           <?php $no = 0; ?>
-          @foreach($biayas as $data)
+          @foreach($penerimaans as $data)
           <?php
             if ($datas[0]->tipe == "rutin") {
               $tr = "info";
@@ -75,7 +75,7 @@
           ?>
           <tr class="{{$tr}}">
             <td>{{$no += 1}}</td>
-            <td>Rp {{$data->biaya}},-</td>
+            <td>Rp {{$data->nilai}},-</td>
             <?php
             if (empty($data->user->name)) {
               $user_name = '-';
@@ -89,12 +89,12 @@
             <td>operator(<b>{{$user_name}}</b>) | Admin(<b>{{$admin_name}}</b>)</td>
             <td>{{$data->created_at}}</td>
             <td>{{$data->updated_at}}</td>
-            <td width="5%"><a href="{{ route('biaya.edit', [$data->id]) }}" class="btn btn-warning">Edit</a></td>
+            <td width="5%"><a href="{{ route('penerimaan.edit', [$data->id]) }}" class="btn btn-warning">Edit</a></td>
             <td width="5%">
-              <form class="" action="{{ route('biaya.destroy', [$data->id]) }}" method="post">
+              <form class="" action="{{ route('penerimaan.destroy', [$data->id]) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <button type="submit" name="button" onclick="return confirm('Apakah yakin menghapus biaya Rp {{$data->biaya}},- ?')" class="btn btn-danger">Delete</button>
+                <button type="submit" name="button" onclick="return confirm('Apakah yakin menghapus penerimaan Rp {{$data->nilai}},- ?')" class="btn btn-danger">Delete</button>
               </form>
             </td>
           </tr>
