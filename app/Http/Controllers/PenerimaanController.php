@@ -39,7 +39,7 @@ class PenerimaanController extends Controller
     $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
     $penerimaans = Penerimaan::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
     $pdf = PDF::loadView('penerimaan.print', compact('datas', 'penerimaans', 'waktu'));
-    return $pdf->download('invoice.pdf');
+    return $pdf->stream('penerimaan.pdf');
   }
 
   public function store(Request $request)

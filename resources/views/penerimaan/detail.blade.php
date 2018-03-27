@@ -10,7 +10,7 @@
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Detail penerimaan</h2>
     <a href="{{ route('penerimaan.create', [$datas[0]->id]) }}" class="btn btn-primary">Tambah penerimaan</a>
-    <a href="{{ route('penerimaan.print', [$datas[0]->id]) }}" class="btn btn-primary">Cetak</a>
+    <a href="{{ route('penerimaan.print', [$datas[0]->id]) }}" class="btn btn-primary" target="_blank">Cetak</a>
     <button type="button" name="button" onclick="history.back()" class="btn btn-danger">Kembali</button>
     <br><br>
       <table class="table table-striped">

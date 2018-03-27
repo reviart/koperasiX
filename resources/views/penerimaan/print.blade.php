@@ -2277,7 +2277,7 @@
     .table > thead > tr > td,
     .table > tbody > tr > td,
     .table > tfoot > tr > td {
-      padding: 8px;
+      padding: 4px;
       line-height: 1.42857143;
       vertical-align: top;
       border-top: 1px solid #ddd;
@@ -6766,13 +6766,13 @@
   </head>
   <body>
     <div class="container">
-      <h3 style="text-align:center;">LAPORAN DATA PENERIMAAN</h3>
+      <h3 style="text-align:center;">LAPORAN DATA PENERIMAAN</h3><hr>
       <p class="text-muted"><i>Dicetak:{{$waktu}}</i></p>
       <div class="table-responsive">
         <table class="table">
           @foreach($datas as $data)
           <tr>
-            <th width="20%">Nomor kontrak</th>
+            <th width="15%">Nomor kontrak</th>
             <td>{{$data->nomor_kontrak}}</td>
           </tr>
           <tr>
@@ -6789,20 +6789,20 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr class="success">
-              <th>No</th>
-              <th>Nilai</th>
-              <th>Tanggal dibuat</th>
-              <th>Tanggal diubah</th>
+              <th style="text-align:center;">NO</th>
+              <th style="text-align:center;">NILAI</th>
+              <th style="text-align:center;">TANGGAL DIBUAT</th>
+              <th style="text-align:center;">TANGGAL DIUBAH</th>
             </tr>
           </thead>
           <tbody>
             <?php $no = 0; ?>
             @foreach($penerimaans as $data)
             <tr>
-              <td>{{$no += 1}}</td>
-              <td>Rp {{$data->nilai}},-</td>
-              <td>{{$data->created_at}}</td>
-              <td>{{$data->updated_at}}</td>
+              <td style="text-align:center;">{{$no += 1}}</td>
+              <td style="text-align:center;">Rp {{$data->nilai}},-</td>
+              <td style="text-align:center;">{{$data->created_at}}</td>
+              <td style="text-align:center;">{{$data->updated_at}}</td>
             </tr>
             @endforeach
           </tbody>

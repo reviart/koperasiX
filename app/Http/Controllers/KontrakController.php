@@ -9,6 +9,7 @@ use App\User;
 use App\Kontrak;
 use Auth;
 use PDF;
+use Carbon\Carbon;
 
 class KontrakController extends Controller
 {
@@ -37,9 +38,11 @@ class KontrakController extends Controller
 
     public function print()
     {
+      $mytime = Carbon::now();
+      $waktu = $mytime->toDateTimeString();
       $datas = Kontrak::with('admin', 'user')->get();
-      $pdf = PDF::loadView('kontrak.print', compact('datas'));
-      return $pdf->download('invoice.pdf');
+      $pdf = PDF::loadView('kontrak.print', compact('datas', 'waktu'));
+      return $pdf->setPaper('a4', 'landscape')->stream('kontrak.pdf');
     }
 
     public function store(Request $request)

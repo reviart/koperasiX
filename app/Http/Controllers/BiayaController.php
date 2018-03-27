@@ -39,7 +39,7 @@ class BiayaController extends Controller
     $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
     $biayas = Biaya::with('admin', 'user', 'kontrak')->where('kontrak_id', $id)->get();
     $pdf = PDF::loadView('biaya.print', compact('datas', 'biayas', 'waktu'));
-    return $pdf->download('invoice.pdf');
+    return $pdf->stream('biaya.pdf');
   }
 
   public function store(Request $request)

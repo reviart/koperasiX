@@ -2269,7 +2269,7 @@
     .table {
       width: 100%;
       max-width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .table > thead > tr > th,
     .table > tbody > tr > th,
@@ -2277,7 +2277,7 @@
     .table > thead > tr > td,
     .table > tbody > tr > td,
     .table > tfoot > tr > td {
-      padding: 8px;
+      padding: 2px;
       line-height: 1.42857143;
       vertical-align: top;
       border-top: 1px solid #ddd;
@@ -6766,46 +6766,46 @@
   </head>
   <body>
     <div class="container">
-      <h1>LAPORAN DATA KONTRAK</h1>
-
+      <h3 style="text-align:center;">LAPORAN DATA KONTRAK</h3><hr>
+      <p class="text-muted"><i>Dicetak:{{$waktu}}</i></p>
       <div class="table-responsive">
-        <table class="table table-striped" style="width:100%">
+        <table class="table table-striped" style="width:100%;">
           <thead>
-            <tr>
-              <th rowspan="2">NO</th>
-              <th rowspan="2">NOMOR KONTRAK</th>
-              <th colspan="2">NAMA</th>
-              <th rowspan="2">NILAI KERJA</th>
-              <th rowspan="2">TIPE</th>
-              <th rowspan="2">TAHAP BAYAR</th>
-              <th rowspan="2">STATUS</th>
-              <th colspan="4">TANGGAL</th>
+            <tr class="success">
+              <th rowspan="2" style="text-align:center;vertical-align:middle;">NO</th>
+              <th rowspan="2" style="text-align:center;vertical-align:middle;">NOMOR KONTRAK</th>
+              <th colspan="2" style="text-align:center;">NAMA</th>
+              <th rowspan="2" style="text-align:center;vertical-align:middle;">NILAI KERJA</th>
+              <th rowspan="2" style="text-align:center;vertical-align:middle;">TIPE</th>
+              <th rowspan="2" width="5%" style="text-align:center;vertical-align:middle;">TAHAP</th>
+              <th rowspan="2" style="text-align:center;vertical-align:middle;">STATUS</th>
+              <th colspan="4" style="text-align:center;">TANGGAL</th>
             </tr>
-            <tr>
-            	<th>PEKERJAAN</th>
-              <th>PELAKSANA</th>
-              <th>INPUT</th>
-              <th>KONTRAK</th>
-              <th>MULAI</th>
-              <th>SELESAI</th>
+            <tr class="success">
+            	<th style="text-align:center;">PEKERJAAN</th>
+              <th style="text-align:center;">PELAKSANA</th>
+              <th style="text-align:center;">INPUT</th>
+              <th style="text-align:center;">KONTRAK</th>
+              <th style="text-align:center;">MULAI</th>
+              <th style="text-align:center;">SELESAI</th>
             </tr>
           </thead>
           <tbody>
             <?php $no = 0; ?>
             @foreach($datas as $data)
             <tr>
-              <td>{{$no += 1}}</td>
-              <td>{{$data->nomor_kontrak}}</td>
-              <td>{{$data->nama_pekerjaan}}</td>
-              <td>{{$data->nama_pelaksana}}</td>
-              <td>{{$data->nilai_kerja}}</td>
-              <td>{{$data->tipe}}</td>
-              <td>{{$data->tahap_bayar}}</td>
-              <td>{{$data->status}}</td>
-              <td>{{$data->created_at}}</td>
-              <td>{{$data->tgl_kontrak}}</td>
-              <td>{{$data->tgl_mulai}}</td>
-              <td>{{$data->tgl_selesai}}</td>
+              <td style="text-align:center;">{{$no += 1}}</td>
+              <td style="text-align:center;">{{$data->nomor_kontrak}}</td>
+              <td style="text-align:center;">{{$data->nama_pekerjaan}}</td>
+              <td style="text-align:center;">{{$data->nama_pelaksana}}</td>
+              <td style="text-align:center;">{{$data->nilai_kerja}}</td>
+              <td style="text-align:center;">{{$data->tipe}}</td>
+              <td style="text-align:center;">{{$data->tahap_bayar}}</td>
+              <td style="text-align:center;">{{$data->status}}</td>
+              <td style="text-align:center;">{{$data->created_at}}</td>
+              <td style="text-align:center;">{{$data->tgl_kontrak}}</td>
+              <td style="text-align:center;">{{$data->tgl_mulai}}</td>
+              <td style="text-align:center;">{{$data->tgl_selesai}}</td>
             </tr>
             @endforeach
           </tbody>
