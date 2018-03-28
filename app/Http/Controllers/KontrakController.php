@@ -36,13 +36,22 @@ class KontrakController extends Controller
       return view('kontrak.detail', compact('datas'));
     }
 
-    public function print()
+    public function printAll()
     {
       $mytime = Carbon::now();
       $waktu = $mytime->toDateTimeString();
       $datas = Kontrak::with('admin', 'user')->get();
-      $pdf = PDF::loadView('kontrak.print', compact('datas', 'waktu'));
+      $pdf = PDF::loadView('kontrak.printall', compact('datas', 'waktu'));
       return $pdf->setPaper('a4', 'landscape')->stream('kontrak.pdf');
+    }
+
+    public function printDetail($id)
+    {
+      $mytime = Carbon::now();
+      $waktu = $mytime->toDateTimeString();
+      $datas = Kontrak::with('admin', 'user')->where('id', $id)->get();
+      $pdf = PDF::loadView('kontrak.printdetail', compact('datas', 'waktu'));
+      return $pdf->stream('kontrakdetail.pdf');
     }
 
     public function store(Request $request)

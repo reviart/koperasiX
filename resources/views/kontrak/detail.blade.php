@@ -10,6 +10,7 @@
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Detail Kontrak</h2>
     <a href="{{ route('kontrak.create') }}" class="btn btn-primary">Tambah kontrak</a>
+    <a href="{{ route('kontrak.printdet', [$datas[0]->id]) }}" class="btn btn-primary" target="_blank">Cetak kontrak ini</a>
     <a href="{{ route('kontrak.edit', [$datas[0]->id]) }}" class="btn btn-warning">Edit kontrak</a>
     <button type="button" name="button" onclick="history.back()" class="btn btn-danger">Kembali</button>
     <br><br>

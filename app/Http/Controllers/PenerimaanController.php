@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\penerimaan;
+use App\Penerimaan;
 use App\Admin;
 use App\User;
 use App\Kontrak;

@@ -34,7 +34,8 @@ Route::prefix('kontrak')->group(function () {
   Route::get('/', 'KontrakController@index')->name('kontrak.index');
   Route::get('create', 'KontrakController@create')->name('kontrak.create');
   Route::get('detail/{id}', 'KontrakController@detail')->name('kontrak.detail');
-  Route::get('print', 'KontrakController@print')->name('kontrak.print');
+  Route::get('printall', 'KontrakController@printAll')->name('kontrak.print');
+  Route::get('printdet/{id}', 'KontrakController@printDetail')->name('kontrak.printdet');
   Route::get('store', 'KontrakController@create')->name('kontrak.store');
   Route::post('store', 'KontrakController@store')->name('kontrak.store.submit');
   Route::get('edit/{id}', 'KontrakController@show')->name('kontrak.edit');
