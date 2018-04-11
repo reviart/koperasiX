@@ -68,4 +68,11 @@ class AdminController extends Controller
         return view('welcome');
     }
 
+    public function destroy($id)
+    {
+      $datas = User::findOrFail($id);
+      $datas->delete();
+      return redirect()->back()->with('warning', '1 record deleted!');
+    }
+
 }

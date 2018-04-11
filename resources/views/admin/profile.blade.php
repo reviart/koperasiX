@@ -2,6 +2,20 @@
 
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  @if (session('success'))
+      <div class="alert alert-success">
+        <center>
+          {{ session('success') }}
+        </center>
+      </div>
+  @elseif (session('warning'))
+      <div class="alert alert-warning">
+        <center>
+          {{ session('warning') }}
+        </center>
+      </div>
+  @else
+  @endif
   <h2 class="sub-header">Profile</h2>
   <h4>Nama : {{Auth::guard('admin')->user()->name}}</h4>
   <h4>Email : {{Auth::guard('admin')->user()->email}}</h4>
@@ -17,6 +31,7 @@
           <th>Nama</th>
           <th>Waktu pembuatan</th>
           <th>Terakhir login</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -53,6 +68,13 @@
           <td>{{$data->name}}</td>
           <td>{{$data->created_at}}</td>
           <td>{{$data->current_sign_in}}</td>
+          <td>
+            <form class="" action="{{ route('admin.destroy.op', [$data->id]) }}" method="post">
+              {{ csrf_field() }}
+              {{ method_field('DELETE') }}
+              <button type="submit" name="button" onclick="return confirm('Apakah yakin menghapus operator {{$data->name}} ?')" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
         </tr>
         @endforeach
       </tbody>

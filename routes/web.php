@@ -28,6 +28,8 @@ Route::prefix('admin')->group(function () {
   //----------------------------------
   Route::get('login', 'Admin\AdminLoginController@login')->name('admin.login');
   Route::post('login', 'Admin\AdminLoginController@loginAdmin')->name('admin.login.submit');
+  //----------------------------------
+  Route::delete('destroy/{id}', 'Admin\AdminController@destroy')->name('admin.destroy.op');
 });
 
 Route::prefix('kontrak')->group(function () {
