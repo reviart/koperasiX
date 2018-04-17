@@ -16,6 +16,7 @@ class CreateBiayasTable extends Migration
         Schema::create('biayas', function (Blueprint $table) {
             $table->increments('id');
             $table->double('biaya');
+            $table->string('keterangan')->nullable();
             $table->unsignedInteger('admin_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('kontrak_id');

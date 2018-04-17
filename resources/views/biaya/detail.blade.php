@@ -39,7 +39,7 @@
         ?>
         <tr>
           <th>Terakhir dibuat/ubah</th>
-          <td>Pegawai(<b>{{$user_name}}</b>) | Admin(<b>{{$admin_name}}</b>)</td>
+          <td>Pegawai(<b>{{substr($user_name, 0, 7)}}</b>) | Admin(<b>{{substr($admin_name, 0, 7)}}</b>)</td>
         </tr>
         <tr>
           <th>Tanggal dibuat</th>
@@ -57,6 +57,7 @@
           <tr class="success">
             <th>No</th>
             <th>Biaya</th>
+            <th>Keterangan</th>
             <th>Terakhir dibuat/ubah</th>
             <th>Tanggal dibuat</th>
             <th>Tanggal diubah</th>
@@ -77,6 +78,7 @@
           <tr class="{{$tr}}">
             <td>{{$no += 1}}</td>
             <td>Rp {{$data->biaya}},-</td>
+            <td>{{substr($data->keterangan, 0, 35)}}</td>
             <?php
             if (empty($data->user->name)) {
               $user_name = '-';
@@ -87,7 +89,7 @@
               $user_name = $data->user->name;
             }
             ?>
-            <td>operator(<b>{{$user_name}}</b>) | Admin(<b>{{$admin_name}}</b>)</td>
+            <td>operator(<b>{{substr($user_name, 0, 7)}}</b>) | Admin(<b>{{substr($admin_name, 0, 7)}}</b>)</td>
             <td>{{$data->created_at}}</td>
             <td>{{$data->updated_at}}</td>
             <td width="5%"><a href="{{ route('biaya.edit', [$data->id]) }}" class="btn btn-warning">Edit</a></td>

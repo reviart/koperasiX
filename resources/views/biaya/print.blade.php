@@ -6791,6 +6791,7 @@
             <tr class="success">
               <th style="text-align:center;">NO</th>
               <th style="text-align:center;">BIAYA</th>
+              <th style="text-align:center;">KETERANGAN</th>
               <th style="text-align:center;">TANGGAL DIBUAT</th>
               <th style="text-align:center;">TANGGAL DIUBAH</th>
             </tr>
@@ -6801,6 +6802,7 @@
             <tr>
               <td style="text-align:center;">{{$no += 1}}</td>
               <td style="text-align:center;">Rp {{$data->biaya}},-</td>
+              <td style="text-align:center; width:10px;">{{substr($data->keterangan, 0, 35)}}</td>
               <td style="text-align:center;">{{$data->created_at}}</td>
               <td style="text-align:center;">{{$data->updated_at}}</td>
             </tr>

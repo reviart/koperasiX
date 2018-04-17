@@ -46,6 +46,7 @@ class BiayaController extends Controller
   {
     $object = new Biaya;
     $object->biaya = $request->get('biaya');
+    $object->keterangan = $request->get('keterangan');
     $object->admin_id = $request->get('admin_id');
     $object->user_id = $request->get('user_id');
     $object->kontrak_id = $request->get('kontrak_id');
@@ -65,6 +66,7 @@ class BiayaController extends Controller
     $datas = Biaya::find($id);
     $datas->update([
       'biaya' => $request->get('biaya'),
+      'keterangan' => $request->get('keterangan'),
       'admin_id' => $request->get('admin_id'),
       'user_id' => $request->get('user_id'),
       'kontrak_id' => $request->get('kontrak_id')

@@ -74,5 +74,4 @@ class AdminController extends Controller
       $datas->delete();
       return redirect()->back()->with('warning', '1 record deleted!');
     }
-
 }

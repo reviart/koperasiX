@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 Route::get('/operator/home', 'HomeController@index')->name('operator.dashboard');
 Route::get('/test', 'PdfController@index')->name('pdf');

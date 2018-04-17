@@ -47,6 +47,17 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
+                            <label for="keterangan" class="col-md-3 control-label">Keterangan</label>
+                            <div class="col-md-8">
+                                <input id="keterangan" type="text" class="form-control" name="keterangan" value="{{$datas[0]->keterangan}}" maxlength="35" required>
+                                @if ($errors->has('keterangan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('keterangan') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
